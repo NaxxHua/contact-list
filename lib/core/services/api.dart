@@ -8,10 +8,10 @@ class Api {
 
   // * Add contact
   void addContact({
-    required String firstName,
-    required String lastName,
-    String? phoneNumber,
-    String? emailAddress,
+    String firstName,
+    String lastName,
+    String phoneNumber,
+    String emailAddress,
   }) {
     _firestore.collection('contacts').add({
       'firstName': firstName,
@@ -23,10 +23,10 @@ class Api {
 
   // * Edit contact (update)
   void updateContact({
-    required String firstName,
-    required String lastName,
-    String? phoneNumber,
-    String? emailAddress,
+    String firstName,
+    String lastName,
+    String phoneNumber,
+    String emailAddress,
   }) {
     _firestore.collection('contacts').doc().update({
       'firstName': firstName,
@@ -38,10 +38,10 @@ class Api {
 
   // * Delete contact
   void deleteContact({
-    required String firstName,
-    required String lastName,
-    String? phoneNumber,
-    String? emailAddress,
+    String firstName,
+    String lastName,
+    String phoneNumber,
+    String emailAddress,
   }) {
     _firestore.collection('contacts').doc().delete();
   }

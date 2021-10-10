@@ -8,7 +8,7 @@ import 'package:contact_list/ui/base_widget.dart';
 
 class ContactView extends StatelessWidget {
   static const routeName = '/contact-view';
-  final Contact? contact;
+  final Contact contact;
 
   ContactView({this.contact});
 
@@ -16,7 +16,7 @@ class ContactView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseWidget<ContactViewModel>(
       model: ContactViewModel(api: Provider.of(context)),
-      onModelReady: (model) async {
+      onModelReady: (model) {
         model.getContacts();
       },
       builder: (context, model, _) => model.busy

@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class BaseWidget<T extends ChangeNotifier> extends StatefulWidget {
-  final Widget Function(BuildContext context, T model, Widget? child) builder;
+  final Widget Function(BuildContext context, T model, Widget child) builder;
   final T model;
-  final Widget? child;
+  final Widget child;
   final Function(T) onModelReady;
 
   BaseWidget({
-    required this.builder,
-    required this.model,
+    this.builder,
+    this.model,
     this.child,
-    required this.onModelReady,
+    this.onModelReady,
   });
 
   @override
@@ -19,7 +19,7 @@ class BaseWidget<T extends ChangeNotifier> extends StatefulWidget {
 }
 
 class _BaseWidgetState<T extends ChangeNotifier> extends State<BaseWidget<T>> {
-  late T model;
+  T model;
 
   @override
   void initState() {

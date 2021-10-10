@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:contact_list/core/models/contact.dart';
 
 class ContactCard extends StatelessWidget {
-  final Contact? contact;
+  final Contact contact;
 
   ContactCard({
     this.contact,
@@ -18,7 +18,7 @@ class ContactCard extends StatelessWidget {
             children: [
               const CircleAvatar(),
               Column(
-                children: [Text(contact!.firstName), Text(contact!.lastName)],
+                children: [Text(contact.firstName), Text(contact.lastName)],
               )
             ],
           )

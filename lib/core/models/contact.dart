@@ -1,15 +1,15 @@
-// Model for contacts, null safe by using "late" keyword
+// Model for contacts, null safe by using "" keyword
 
 class Contact {
-  late String firstName;
-  late String lastName;
-  late String? phoneNumber;
-  late String? emailAddress;
+  String firstName;
+  String lastName;
+  String phoneNumber;
+  String emailAddress;
 
-  // Firstname and lastname are required
+  // Firstname and lastname are
   Contact({
-    required this.firstName,
-    required this.lastName,
+    this.firstName,
+    this.lastName,
     this.phoneNumber,
     this.emailAddress,
   });
