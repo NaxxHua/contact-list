@@ -11,19 +11,6 @@ class ContactCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              const CircleAvatar(),
-              Column(
-                children: [Text(contact.firstName), Text(contact.lastName)],
-              )
-            ],
-          )
-        ],
-      ),
-    );
+    return Container(child: Text(contact.firstName));
   }
 }

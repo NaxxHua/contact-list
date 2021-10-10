@@ -3,14 +3,11 @@ import 'package:flutter/material.dart';
 
 import 'package:contact_list/ui/widgets/contact_card.dart';
 import 'package:contact_list/core/viewmodels/contact_view_model.dart';
-import 'package:contact_list/core/models/contact.dart';
 import 'package:contact_list/ui/base_widget.dart';
 
+// ignore: use_key_in_widget_constructors
 class ContactView extends StatelessWidget {
   static const routeName = '/contact-view';
-  final Contact contact;
-
-  ContactView({this.contact});
 
   @override
   Widget build(BuildContext context) {
@@ -20,21 +17,21 @@ class ContactView extends StatelessWidget {
         model.getContacts();
       },
       builder: (context, model, _) => model.busy
-          ? Scaffold(
+          ? const Scaffold(
               body: Center(
                 child: CircularProgressIndicator(),
               ),
             )
           : Scaffold(
-              //TODO: styling
               appBar: AppBar(),
-              body: SafeArea(
-                child: Expanded(
-                  child: ListView.builder(itemBuilder: (context, index) {
-                    return ContactCard();
-                  }),
-                ),
-              )),
+              body: ListView.builder(
+                  itemCount: model.contacts.length,
+                  itemBuilder: (context, index) {
+                    final contact = model.contacts[index];
+                    return ContactCard(
+                      contact: contact,
+                    );
+                  })),
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:contact_list/ui/views/contact_view.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
 }

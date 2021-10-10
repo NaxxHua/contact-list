@@ -50,7 +50,7 @@ class Api {
   Future<List<Contact>> getContacts() async {
     List<Contact> contacts = [];
     await FirebaseFirestore.instance
-        .collection('Contacts')
+        .collection('contacts')
         .get()
         .then((querySnapshot) {
       for (var doc in querySnapshot.docs) {
