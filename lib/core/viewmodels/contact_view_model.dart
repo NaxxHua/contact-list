@@ -8,12 +8,12 @@ class ContactViewModel extends BaseModel {
 
   ContactViewModel({Api api}) : _api = api;
 
+  // * ViewModel State
+  String id = '';
   String firstName = '';
   String lastName = '';
   String phoneNumber = '';
   String emailAddress = '';
-
-  // * View Model State Variables
   List<Contact> contacts;
 
   // * Get contacts;
@@ -50,7 +50,7 @@ class ContactViewModel extends BaseModel {
   // * Delete Contact
   void deleteContact() async {
     setBusy(true);
-    _api.deleteContact();
+    _api.deleteContact(id: id);
     setBusy(false);
   }
 }

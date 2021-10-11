@@ -38,13 +38,8 @@ class Api {
   }
 
   // * Delete contact
-  void deleteContact({
-    String firstName,
-    String lastName,
-    String phoneNumber,
-    String emailAddress,
-  }) {
-    _firestore.collection('contacts').doc().delete();
+  void deleteContact({String id}) {
+    _firestore.collection('contacts').doc(id).delete();
   }
 
   // * Get contact
@@ -56,6 +51,7 @@ class Api {
         .then((querySnapshot) {
       for (var doc in querySnapshot.docs) {
         contacts.add(Contact(
+            id: doc.id,
             firstName: doc["firstName"],
             lastName: doc["lastName"],
             phoneNumber: doc["phoneNumber"],

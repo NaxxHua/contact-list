@@ -1,3 +1,5 @@
+// * This is the base model that can be repeatly used in viewmodel to provide ChangeNotifier function
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
