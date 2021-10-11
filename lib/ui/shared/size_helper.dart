@@ -1,11 +1,11 @@
+// * Helper for device size to use in other widgets
+
 import 'package:flutter/material.dart';
 
-// * Helper for device height to use in other widgets
 double displayHeight(BuildContext context) {
   return MediaQuery.of(context).size.height;
 }
 
-// * Helper for device width to use in other widgets
 double displayWidth(BuildContext context) {
   return MediaQuery.of(context).size.width;
 }

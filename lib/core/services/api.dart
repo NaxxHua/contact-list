@@ -1,4 +1,5 @@
-// api file that handles all the interaction with backend
+// * Api file that handles all the interaction with backend
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:contact_list/core/models/contact.dart';

@@ -1,3 +1,4 @@
+// * This is the contact view model. View model handles all the business logic and connects view and model.
 import 'package:contact_list/core/models/contact.dart';
 import 'package:contact_list/core/services/api.dart';
 import 'package:contact_list/core/viewmodels/base_model.dart';
@@ -7,6 +8,11 @@ class ContactViewModel extends BaseModel {
 
   ContactViewModel({Api api}) : _api = api;
 
+  String firstName = '';
+  String lastName = '';
+  String phoneNumber = '';
+  String emailAddress = '';
+
   // * View Model State Variables
   List<Contact> contacts;
 
@@ -14,6 +20,37 @@ class ContactViewModel extends BaseModel {
   void getContacts() async {
     setBusy(true);
     contacts = await _api.getContacts();
+    setBusy(false);
+  }
+
+  // * Create Contact
+  void createContact() async {
+    setBusy(true);
+    _api.addContact(
+      firstName: firstName,
+      lastName: lastName,
+      phoneNumber: phoneNumber,
+      emailAddress: emailAddress,
+    );
+    setBusy(false);
+  }
+
+  // * Update Contact
+  void updateContact() async {
+    setBusy(true);
+    _api.updateContact(
+      firstName: firstName,
+      lastName: lastName,
+      phoneNumber: phoneNumber,
+      emailAddress: emailAddress,
+    );
+    setBusy(false);
+  }
+
+  // * Delete Contact
+  void deleteContact() async {
+    setBusy(true);
+    _api.deleteContact();
     setBusy(false);
   }
 }

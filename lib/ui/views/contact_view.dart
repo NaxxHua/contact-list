@@ -1,3 +1,5 @@
+// * This is the main page of the app. It consists a list of contact cards.
+
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 

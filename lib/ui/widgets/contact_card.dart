@@ -1,3 +1,5 @@
+// * This is the contact card widget.
+
 import 'package:flutter/material.dart';
 
 import 'package:contact_list/core/models/contact.dart';

@@ -1,4 +1,4 @@
-// Model for contacts, null safe by using "" keyword
+// * Model for contact
 
 class Contact {
   String firstName;
@@ -6,7 +6,6 @@ class Contact {
   String phoneNumber;
   String emailAddress;
 
-  // Firstname and lastname are
   Contact({
     this.firstName,
     this.lastName,
