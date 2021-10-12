@@ -1,5 +1,7 @@
 // * This is the main page of the app. It consists a list of contact cards.
 
+import 'package:contact_list/ui/views/contact_create_view.dart';
+import 'package:contact_list/ui/views/empty_content_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
@@ -25,15 +27,28 @@ class ContactView extends StatelessWidget {
               ),
             )
           : Scaffold(
-              appBar: AppBar(),
-              body: ListView.builder(
-                  itemCount: model.contacts.length,
-                  itemBuilder: (context, index) {
-                    final contact = model.contacts[index];
-                    return ContactCard(
-                      contact: contact,
-                    );
-                  })),
+              appBar:
+                  AppBar(title: const Text("Contact List"), actions: <Widget>[
+                IconButton(
+                  icon: const Icon(Icons.add),
+                  tooltip: 'Add new contact',
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+                      return const ContactCreateView();
+                    }));
+                  },
+                ),
+              ]),
+              body: (model.contacts.isNotEmpty)
+                  ? ListView.builder(
+                      itemCount: model.contacts.length,
+                      itemBuilder: (context, index) {
+                        final contact = model.contacts[index];
+                        return ContactCard(
+                          contact: contact,
+                        );
+                      })
+                  : const EmptyContentView()),
     );
   }
 }

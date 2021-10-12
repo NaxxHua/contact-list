@@ -1,4 +1,6 @@
 import 'package:contact_list/provider_setup.dart';
+import 'package:contact_list/ui/views/contact_detail_view.dart';
+import 'package:contact_list/ui/views/contact_edit_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -6,33 +8,53 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:contact_list/ui/views/contact_view.dart';
 
 void main() async {
+  // Initialize the app
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  const MyApp({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: providers,
       child: MaterialApp(
         title: 'Contact List',
+        // Theme data follows Visa Digital Brand Guidelines Ver 1.0
         theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or simply save your changes to "hot reload" in a Flutter IDE).
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted.
-          primarySwatch: Colors.blue,
+          primaryColor: const Color(0xff1a1f71),
+          primaryColorLight: const Color(0xfffa9b00),
+          backgroundColor: Colors.white,
+          shadowColor: Colors.grey[300],
+          appBarTheme: const AppBarTheme(
+            color: Color(0xff1a1f71),
+            elevation: 0,
+          ),
+          textTheme: TextTheme(
+            headline1: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[700],
+            ),
+            headline2: TextStyle(
+              fontSize: 21,
+              color: Colors.grey[400],
+            ),
+            bodyText1: TextStyle(
+              fontSize: 19,
+              color: Colors.grey[400],
+            ),
+          ),
         ),
         home: ContactView(),
-        routes: {ContactView.routeName: (context) => ContactView()},
+        routes: {
+          ContactView.routeName: (context) => ContactView(),
+          ContactDetailView.routeName: (context) => const ContactDetailView(),
+          ContactEditView.routeName: (context) => const ContactEditView()
+        },
       ),
     );
   }

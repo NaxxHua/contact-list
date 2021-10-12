@@ -7,19 +7,26 @@ import 'package:contact_list/core/models/contact.dart';
 class Api {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  // * Add contact
-  void addContact({
+  // * Create contact
+  Future<bool> createContact({
     String firstName,
     String lastName,
     String phoneNumber,
     String emailAddress,
-  }) {
-    _firestore.collection('contacts').add({
-      'firstName': firstName,
-      'lastName': lastName,
-      'phoneNumber': phoneNumber,
-      'emailAddress': emailAddress,
-    });
+  }) async {
+    try {
+      _firestore.collection('contacts').add({
+        'firstName': firstName,
+        'lastName': lastName,
+        'phoneNumber': phoneNumber,
+        'emailAddress': emailAddress,
+      });
+      return true;
+    } catch (e) {
+      print('error');
+      print(e.toString());
+      return false;
+    }
   }
 
   // * Edit contact (update)
