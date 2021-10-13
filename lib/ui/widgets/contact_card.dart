@@ -1,12 +1,13 @@
 // * This is the contact card widget.
 
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:contact_list/core/models/contact.dart';
 import 'package:contact_list/ui/shared/size_helper.dart';
 
 class ContactCard extends StatelessWidget {
-  final Contact contact;
+  final DocumentSnapshot<Object> contact;
 
   const ContactCard({
     Key key,
@@ -92,14 +93,14 @@ class ContactCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          contact.firstName + " " + contact.lastName,
+                          contact['firstName'] + " " + contact['lastName'],
                           style: Theme.of(context).textTheme.headline1,
                         ),
                         SizedBox(
                           height: smallSpace(context) * 0.1,
                         ),
                         Text(
-                          contact.phoneNumber,
+                          contact['phoneNumber'],
                           style: Theme.of(context).textTheme.bodyText1.copyWith(
                                 fontWeight: FontWeight.bold,
                               ),

@@ -37,7 +37,7 @@ class ContactEditViewModel extends BaseModel {
   }
 
   // * Delete Contact
-  void deleteContact() async {
+  void deleteContact(id) async {
     setBusy(true);
     _api.deleteContact(id: id);
     setBusy(false);

@@ -50,7 +50,7 @@ class Api {
     _firestore.collection('contacts').doc(id).delete();
   }
 
-  // * Get contact
+  // * Get all contacts
   Future<List<Contact>> getContacts() async {
     List<Contact> contacts = [];
     await FirebaseFirestore.instance

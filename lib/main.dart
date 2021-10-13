@@ -55,10 +55,10 @@ class MyApp extends StatelessWidget {
         home: ContactView(),
         routes: {
           ContactView.routeName: (context) => ContactView(),
-          ContactDetailView.routeName: (context) => const ContactDetailView(),
-          ContactEditView.routeName: (context) => const ContactEditView(),
-          ContactCreateView.routeName: (context) => const ContactCreateView(),
-          EmptyContentView.routeName: (context) => const EmptyContentView(),
+          ContactDetailView.routeName: (context) => ContactDetailView(),
+          ContactEditView.routeName: (context) => ContactEditView(),
+          ContactCreateView.routeName: (context) => ContactCreateView(),
+          EmptyContentView.routeName: (context) => EmptyContentView(),
         },
       ),
     );

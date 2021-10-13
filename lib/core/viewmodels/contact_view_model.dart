@@ -1,4 +1,5 @@
 // * This is the contact view model. View model handles all the business logic and connects view and model.
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:contact_list/core/models/contact.dart';
 import 'package:contact_list/core/services/api.dart';
 import 'package:contact_list/core/viewmodels/base_model.dart';
@@ -7,6 +8,8 @@ class ContactViewModel extends BaseModel {
   final Api _api;
 
   ContactViewModel({Api api}) : _api = api;
+
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   // * ViewModel State
   String id = '';
@@ -35,6 +38,11 @@ class ContactViewModel extends BaseModel {
     setBusy(true);
     contacts = await _api.getContacts();
     setBusy(false);
+  }
+
+  // * Get contacts stream
+  Stream<QuerySnapshot<Map<String, dynamic>>> getContactsStream() {
+    return _firestore.collection('contacts').snapshots();
   }
 
   // * Create Contact

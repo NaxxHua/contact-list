@@ -3,6 +3,7 @@
 import 'package:contact_list/ui/views/contact_detail_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:contact_list/core/models/contact.dart';
 import 'package:contact_list/core/viewmodels/contact_edit_view_model.dart';
@@ -16,7 +17,7 @@ class ContactEditView extends StatefulWidget {
 
   const ContactEditView({Key key, this.contact}) : super(key: key);
 
-  final Contact contact;
+  final DocumentSnapshot<Object> contact;
 
   @override
   State<ContactEditView> createState() => _ContactEditViewState();
@@ -39,7 +40,7 @@ class _ContactEditViewState extends State<ContactEditView> {
             : Scaffold(
                 appBar: AppBar(
                   elevation: 2.0,
-                  title: Text(widget.contact.firstName),
+                  title: Text(widget.contact['firstName']),
                   actions: <Widget>[
                     TextButton(
                       // The button that saves(submits) data
@@ -52,13 +53,7 @@ class _ContactEditViewState extends State<ContactEditView> {
                         _formKey.currentState.save();
                         // Update contact
                         model.updateContact();
-                        model.getContacts();
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ContactDetailView(
-                                      contact: widget.contact,
-                                    )));
+                        Navigator.pop(context);
                       },
                     ),
                   ],
@@ -84,7 +79,7 @@ class _ContactEditViewState extends State<ContactEditView> {
                             child: ContactFormField(
                               hintText: 'First Name',
                               controller: TextEditingController(
-                                text: widget.contact.firstName,
+                                text: widget.contact['firstName'],
                               ),
                               onSaved: (firstName) =>
                                   model.firstName = firstName,
@@ -98,7 +93,7 @@ class _ContactEditViewState extends State<ContactEditView> {
                             child: ContactFormField(
                               hintText: 'Last Name',
                               controller: TextEditingController(
-                                  text: widget.contact.lastName),
+                                  text: widget.contact['lastName']),
                               onSaved: (lastName) => model.lastName = lastName,
                             ),
                           ),
@@ -110,7 +105,7 @@ class _ContactEditViewState extends State<ContactEditView> {
                             child: ContactFormField(
                               hintText: 'Phone Number',
                               controller: TextEditingController(
-                                  text: widget.contact.phoneNumber),
+                                  text: widget.contact['phoneNumber']),
                               onSaved: (phoneNumber) =>
                                   model.phoneNumber = phoneNumber,
                             ),
@@ -123,13 +118,55 @@ class _ContactEditViewState extends State<ContactEditView> {
                             child: ContactFormField(
                               hintText: 'Email Address',
                               controller: TextEditingController(
-                                  text: widget.contact.emailAddress),
+                                  text: widget.contact['emailAddress']),
                               onSaved: (email) => model.emailAddress = email,
                             ),
                           ),
                           SizedBox(
                             height: smallSpace(context),
                           ),
+                          SizedBox(
+                              child: TextButton(
+                            onPressed: () => showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => AlertDialog(
+                                title: Text('Are you sure you want to delete ' +
+                                    widget.contact['firstName'].toString() +
+                                    ' ' +
+                                    widget.contact['lastName'] +
+                                    '?'),
+                                content:
+                                    const Text('This action cannot be undone'),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(context, 'Cancel'),
+                                    child: const Text(
+                                      'Cancel',
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () => [
+                                      Navigator.of(context)
+                                          .pushNamedAndRemoveUntil('/',
+                                              (Route<dynamic> route) => false),
+                                      model.deleteContact(
+                                          widget.contact.id.toString())
+                                    ],
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            child: Text(
+                              'Delete Contact',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText1
+                                  .copyWith(color: Colors.red),
+                            ),
+                          )),
                         ])))));
   }
 }
