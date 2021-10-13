@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AuthFormField extends StatelessWidget {
+class ContactFormField extends StatelessWidget {
   final Function validator;
   final hintText;
   final labelText;
@@ -11,7 +11,7 @@ class AuthFormField extends StatelessWidget {
   final bool autofocus;
   final TextEditingController controller;
 
-  AuthFormField({
+  ContactFormField({
     this.validator,
     this.hintText,
     this.suffixIcon,

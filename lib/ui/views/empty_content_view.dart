@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 
 class EmptyContentView extends StatelessWidget {
+  static const routeName = '/empty-content-view';
+
   const EmptyContentView({
     Key key,
     this.title = 'Nothing here',

@@ -10,7 +10,7 @@ class ContactViewModel extends BaseModel {
 
   // * ViewModel State
   String id = '';
-  String firstName = '';
+  String firstName;
   String lastName = '';
   String phoneNumber = '';
   String emailAddress = '';
@@ -54,24 +54,5 @@ class ContactViewModel extends BaseModel {
       print("Valid contact info");
       valid = true;
     }
-  }
-
-  // * Update Contact
-  void updateContact() async {
-    setBusy(true);
-    _api.updateContact(
-      firstName: firstName,
-      lastName: lastName,
-      phoneNumber: phoneNumber,
-      emailAddress: emailAddress,
-    );
-    setBusy(false);
-  }
-
-  // * Delete Contact
-  void deleteContact() async {
-    setBusy(true);
-    _api.deleteContact(id: id);
-    setBusy(false);
   }
 }

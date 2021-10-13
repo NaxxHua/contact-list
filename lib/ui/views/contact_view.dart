@@ -1,6 +1,7 @@
 // * This is the main page of the app. It consists a list of contact cards.
 
 import 'package:contact_list/ui/views/contact_create_view.dart';
+import 'package:contact_list/ui/views/contact_detail_view.dart';
 import 'package:contact_list/ui/views/empty_content_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -44,8 +45,16 @@ class ContactView extends StatelessWidget {
                       itemCount: model.contacts.length,
                       itemBuilder: (context, index) {
                         final contact = model.contacts[index];
-                        return ContactCard(
-                          contact: contact,
+                        return GestureDetector(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ContactDetailView(
+                                        contact: contact,
+                                      ))),
+                          child: ContactCard(
+                            contact: contact,
+                          ),
                         );
                       })
                   : const EmptyContentView()),

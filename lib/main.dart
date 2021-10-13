@@ -1,6 +1,8 @@
 import 'package:contact_list/provider_setup.dart';
+import 'package:contact_list/ui/views/contact_create_view.dart';
 import 'package:contact_list/ui/views/contact_detail_view.dart';
 import 'package:contact_list/ui/views/contact_edit_view.dart';
+import 'package:contact_list/ui/views/empty_content_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -47,13 +49,16 @@ class MyApp extends StatelessWidget {
               fontSize: 19,
               color: Colors.grey[400],
             ),
+            bodyText2: const TextStyle(fontSize: 18, color: Colors.white),
           ),
         ),
         home: ContactView(),
         routes: {
           ContactView.routeName: (context) => ContactView(),
           ContactDetailView.routeName: (context) => const ContactDetailView(),
-          ContactEditView.routeName: (context) => const ContactEditView()
+          ContactEditView.routeName: (context) => const ContactEditView(),
+          ContactCreateView.routeName: (context) => const ContactCreateView(),
+          EmptyContentView.routeName: (context) => const EmptyContentView(),
         },
       ),
     );

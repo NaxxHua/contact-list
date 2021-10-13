@@ -10,7 +10,7 @@ import 'package:contact_list/ui/widgets/contact_form_field.dart';
 import 'package:contact_list/ui/shared/size_helper.dart';
 
 class ContactCreateView extends StatefulWidget {
-  static const routeName = '/contact-edit-view';
+  static const routeName = '/contact-create-view';
 
   const ContactCreateView({Key key}) : super(key: key);
 
@@ -38,10 +38,7 @@ class _ContactCreateViewState extends State<ContactCreateView> {
             : Scaffold(
                 appBar: AppBar(
                   elevation: 2.0,
-                  title:
-                      // Since the initial value of a autocomplete field must be empty,
-                      // The information of the car will be displayed at the app bar
-                      const Text("Add a new contact"),
+                  title: const Text("Add a new contact"),
                   actions: <Widget>[
                     TextButton(
                       // The button that saves(submits) data
@@ -53,7 +50,7 @@ class _ContactCreateViewState extends State<ContactCreateView> {
                         if (_formKey.currentState.validate()) {
                           // Save the user input from the form
                           _formKey.currentState.save();
-                          // Register the user
+                          // Create contact
                           await model.createContact();
                           if (model.valid) {
                             Navigator.of(context).pushNamedAndRemoveUntil(
@@ -72,7 +69,6 @@ class _ContactCreateViewState extends State<ContactCreateView> {
                     ),
                   ],
                 ),
-                // The body of edit car page is a card with form in three columns.
                 body: SafeArea(
                     child: Form(
                         key: _formKey,
@@ -82,7 +78,7 @@ class _ContactCreateViewState extends State<ContactCreateView> {
                           ),
                           SizedBox(
                             width: displayWidth(context),
-                            child: AuthFormField(
+                            child: ContactFormField(
                               hintText: 'Firstname',
                               onSaved: (firstName) =>
                                   model.firstName = firstName,
@@ -93,7 +89,7 @@ class _ContactCreateViewState extends State<ContactCreateView> {
                           ),
                           SizedBox(
                             width: displayWidth(context),
-                            child: AuthFormField(
+                            child: ContactFormField(
                               hintText: 'Lastname',
                               onSaved: (lastName) => model.lastName = lastName,
                             ),
@@ -103,7 +99,7 @@ class _ContactCreateViewState extends State<ContactCreateView> {
                           ),
                           SizedBox(
                             width: displayWidth(context),
-                            child: AuthFormField(
+                            child: ContactFormField(
                               hintText: 'Phone Number',
                               onSaved: (phoneNumber) =>
                                   model.phoneNumber = phoneNumber,
@@ -114,7 +110,7 @@ class _ContactCreateViewState extends State<ContactCreateView> {
                           ),
                           SizedBox(
                             width: displayWidth(context),
-                            child: AuthFormField(
+                            child: ContactFormField(
                               hintText: 'Email Address',
                               onSaved: (email) => model.emailAddress = email,
                               validator: (email) => model.validateEmail(email),

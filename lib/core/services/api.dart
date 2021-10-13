@@ -31,12 +31,13 @@ class Api {
 
   // * Edit contact (update)
   void updateContact({
+    String id,
     String firstName,
     String lastName,
     String phoneNumber,
     String emailAddress,
   }) {
-    _firestore.collection('contacts').doc().update({
+    _firestore.collection('contacts').doc(id).update({
       'firstName': firstName,
       'lastName': lastName,
       'phoneNumber': phoneNumber,
