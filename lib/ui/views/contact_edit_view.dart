@@ -50,7 +50,10 @@ class _ContactEditViewState extends State<ContactEditView> {
                       // The button that saves(submits) data
                       child: Text(
                         "Save",
-                        style: Theme.of(context).textTheme.bodyText2,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2
+                            .copyWith(color: Colors.white),
                       ),
                       onPressed: () async {
                         // Save the user input from the form
@@ -62,103 +65,106 @@ class _ContactEditViewState extends State<ContactEditView> {
                     ),
                   ],
                 ),
-                body: SafeArea(
-                    child: Form(
-                        key: _formKey,
-                        child: Column(children: <Widget>[
-                          SizedBox(
-                            width: displayWidth(context),
-                            child: ContactFormField(
-                              hintText: 'First Name',
-                              controller: TextEditingController(
-                                text: widget.contact['firstName'],
+                body: Form(
+                    key: _formKey,
+                    child: Column(children: <Widget>[
+                      SizedBox(
+                        height: mediumSpace(context),
+                      ),
+                      SizedBox(
+                        width: displayWidth(context),
+                        child: ContactFormField(
+                          hintText: 'First Name',
+                          labelText: 'First Name',
+                          controller: TextEditingController(
+                            text: widget.contact['firstName'],
+                          ),
+                          onSaved: (firstName) => model.firstName = firstName,
+                        ),
+                      ),
+                      SizedBox(
+                        height: smallSpace(context),
+                      ),
+                      SizedBox(
+                        width: displayWidth(context),
+                        child: ContactFormField(
+                          hintText: 'Last Name',
+                          labelText: 'Last Name',
+                          controller: TextEditingController(
+                              text: widget.contact['lastName']),
+                          onSaved: (lastName) => model.lastName = lastName,
+                        ),
+                      ),
+                      SizedBox(
+                        height: smallSpace(context),
+                      ),
+                      SizedBox(
+                        width: displayWidth(context),
+                        child: ContactFormField(
+                          hintText: 'Phone Number',
+                          labelText: 'Phone Number',
+                          controller: TextEditingController(
+                              text: widget.contact['phoneNumber']),
+                          onSaved: (phoneNumber) =>
+                              model.phoneNumber = phoneNumber,
+                        ),
+                      ),
+                      SizedBox(
+                        height: smallSpace(context),
+                      ),
+                      SizedBox(
+                        width: displayWidth(context),
+                        child: ContactFormField(
+                          hintText: 'Email Address',
+                          labelText: 'Email Address',
+                          controller: TextEditingController(
+                              text: widget.contact['emailAddress']),
+                          onSaved: (email) => model.emailAddress = email,
+                        ),
+                      ),
+                      SizedBox(
+                        height: smallSpace(context),
+                      ),
+                      SizedBox(
+                          child: TextButton(
+                        onPressed: () => showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: Text('Are you sure you want to delete ' +
+                                widget.contact['firstName'].toString() +
+                                ' ' +
+                                widget.contact['lastName'] +
+                                '?'),
+                            content: const Text('This action cannot be undone'),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(context, 'Cancel'),
+                                child: const Text(
+                                  'Cancel',
+                                  style: TextStyle(color: Colors.red),
+                                ),
                               ),
-                              onSaved: (firstName) =>
-                                  model.firstName = firstName,
-                            ),
-                          ),
-                          SizedBox(
-                            height: smallSpace(context),
-                          ),
-                          SizedBox(
-                            width: displayWidth(context),
-                            child: ContactFormField(
-                              hintText: 'Last Name',
-                              controller: TextEditingController(
-                                  text: widget.contact['lastName']),
-                              onSaved: (lastName) => model.lastName = lastName,
-                            ),
-                          ),
-                          SizedBox(
-                            height: smallSpace(context),
-                          ),
-                          SizedBox(
-                            width: displayWidth(context),
-                            child: ContactFormField(
-                              hintText: 'Phone Number',
-                              controller: TextEditingController(
-                                  text: widget.contact['phoneNumber']),
-                              onSaved: (phoneNumber) =>
-                                  model.phoneNumber = phoneNumber,
-                            ),
-                          ),
-                          SizedBox(
-                            height: smallSpace(context),
-                          ),
-                          SizedBox(
-                            width: displayWidth(context),
-                            child: ContactFormField(
-                              hintText: 'Email Address',
-                              controller: TextEditingController(
-                                  text: widget.contact['emailAddress']),
-                              onSaved: (email) => model.emailAddress = email,
-                            ),
-                          ),
-                          SizedBox(
-                            height: smallSpace(context),
-                          ),
-                          SizedBox(
-                              child: TextButton(
-                            onPressed: () => showDialog<String>(
-                              context: context,
-                              builder: (BuildContext context) => AlertDialog(
-                                title: Text('Are you sure you want to delete ' +
-                                    widget.contact['firstName'].toString() +
-                                    ' ' +
-                                    widget.contact['lastName'] +
-                                    '?'),
-                                content:
-                                    const Text('This action cannot be undone'),
-                                actions: <Widget>[
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(context, 'Cancel'),
-                                    child: const Text(
-                                      'Cancel',
-                                      style: TextStyle(color: Colors.red),
-                                    ),
-                                  ),
-                                  TextButton(
-                                    onPressed: () => [
-                                      Navigator.of(context)
-                                          .pushNamedAndRemoveUntil('/',
-                                              (Route<dynamic> route) => false),
-                                      model.deleteContact(
-                                          widget.contact.id.toString())
-                                    ],
-                                    child: const Text('OK'),
-                                  ),
+                              TextButton(
+                                onPressed: () => [
+                                  Navigator.of(context).pushNamedAndRemoveUntil(
+                                      '/', (Route<dynamic> route) => false),
+                                  model.deleteContact(
+                                      widget.contact.id.toString())
                                 ],
+                                child: const Text('OK'),
                               ),
-                            ),
-                            child: Text(
-                              'Delete Contact',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText1
-                                  .copyWith(color: Colors.red),
-                            ),
-                          )),
-                        ])))));
+                            ],
+                          ),
+                        ),
+                        child: Text(
+                          'Delete Contact',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .copyWith(color: Colors.red),
+                        ),
+                      )),
+                    ]))));
   }
 }

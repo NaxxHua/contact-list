@@ -32,10 +32,7 @@ class ContactFormField extends StatelessWidget {
       // Pass in validation function from parent widget.
       validator: validator,
       onChanged: onChanged,
-      style: TextStyle(
-        fontWeight: FontWeight.bold,
-        color: Theme.of(context).primaryColor,
-      ),
+      style: Theme.of(context).textTheme.headline1,
       // Save the value in textfield
       onSaved: onSaved,
       cursorColor: Theme.of(context).primaryColor,
@@ -60,22 +57,18 @@ class ContactFormField extends StatelessWidget {
         enabledBorder: OutlineInputBorder(
           borderSide:
               BorderSide(color: Theme.of(context).primaryColor, width: 0.0),
-          borderRadius: BorderRadius.circular(10),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Theme.of(context).primaryColor),
-          borderRadius: BorderRadius.circular(10),
         ),
         suffixIcon: suffixIcon,
         focusedErrorBorder: OutlineInputBorder(
           borderSide:
               BorderSide(color: Theme.of(context).primaryColor, width: 0.0),
-          borderRadius: BorderRadius.circular(10),
         ),
         errorBorder: OutlineInputBorder(
           borderSide:
               BorderSide(color: Theme.of(context).primaryColor, width: 0.0),
-          borderRadius: BorderRadius.circular(10),
         ),
       ),
     );
