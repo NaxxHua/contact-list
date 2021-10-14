@@ -18,25 +18,14 @@ class ContactCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(
         horizontal: smallSpace(context) * 0.4,
-        vertical: smallSpace(context) * 0.7,
       ),
       decoration: BoxDecoration(
-        color: Theme.of(context).backgroundColor,
-        // Add some shadow below the card
-        boxShadow: [
-          BoxShadow(
-            color: Theme.of(context).shadowColor,
-            blurRadius: 5,
-            spreadRadius: 2,
-            // Make the shadow spread downward
-            offset: const Offset(0, 5),
-          ),
-        ],
-      ),
+          color: Theme.of(context).backgroundColor,
+          border: Border(bottom: BorderSide(color: Colors.grey[300]))),
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: smallSpace(context),
-          vertical: smallSpace(context),
+          vertical: mediumSpace(context) * 0.6,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -45,7 +34,7 @@ class ContactCard extends StatelessWidget {
             CircleAvatar(
               backgroundColor: Colors.grey[100],
               foregroundImage: AssetImage('assets/user_icon.png'),
-              radius: smallSpace(context) * 2.5,
+              radius: mediumSpace(context),
             ),
             SizedBox(
               width: mediumSpace(context) * 0.4,
@@ -61,7 +50,10 @@ class ContactCard extends StatelessWidget {
                   height: smallSpace(context) * 0.1,
                 ),
                 Text(contact['phoneNumber'],
-                    style: Theme.of(context).textTheme.bodyText1),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText2
+                        .copyWith(color: Colors.grey[500], fontSize: 16)),
               ],
             ),
           ],
