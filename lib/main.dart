@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           primaryColor: const Color(0xff1a1f71),
           primaryColorLight: const Color(0xfffa9b00),
           backgroundColor: Colors.white,
-          shadowColor: const Color(0xfffa9b00).withOpacity(0.2),
+          shadowColor: Colors.grey[300],
           appBarTheme: const AppBarTheme(
             color: Color(0xff1a1f71),
             elevation: 0,
