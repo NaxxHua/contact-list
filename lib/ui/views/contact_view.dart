@@ -3,6 +3,7 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import 'package:contact_list/ui/widgets/contact_card.dart';
 import 'package:contact_list/core/viewmodels/contact_view_model.dart';
@@ -60,44 +61,39 @@ class _ContactViewState extends State<ContactView> {
                               },
                             ),
                           ]),
-                      //       body: (model.contacts.isNotEmpty)
-                      //           ? ListView.builder(
-                      //               itemCount: model.contacts.length,
-                      //               itemBuilder: (context, index) {
-                      //                 final contact = model.contacts[index];
-                      //                 return GestureDetector(
-                      //                   onTap: () => Navigator.push(
-                      //                       context,
-                      //                       MaterialPageRoute(
-                      //                           builder: (context) =>
-                      //                               ContactDetailView(
-                      //                                 contact: contact,
-                      //                               ))),
-                      //                   child: ContactCard(
-                      //                     contact: contact,
-                      //                   ),
-                      //                 );
-                      //               })
-                      //           : const EmptyContentView());
-                      // }));
                       body: (snapshot.data.docs.isNotEmpty)
-                          ? ListView.builder(
-                              itemCount: snapshot.data.docs.length,
-                              itemBuilder: (context, index) {
-                                return GestureDetector(
-                                  onTap: () => Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => ContactDetailView(
-                                        contact: snapshot.data.docs[index],
-                                      ),
-                                    ),
-                                  ),
-                                  child: ContactCard(
-                                    contact: snapshot.data.docs[index],
-                                  ),
-                                );
-                              })
+                          ? AnimationLimiter(
+                              child: ListView.builder(
+                                  itemCount: snapshot.data.docs.length,
+                                  itemBuilder: (context, index) {
+                                    return GestureDetector(
+                                        onTap: () => Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ContactDetailView(
+                                                  contact:
+                                                      snapshot.data.docs[index],
+                                                ),
+                                              ),
+                                            ),
+                                        child: AnimationConfiguration
+                                            .staggeredList(
+                                          position: index,
+                                          duration:
+                                              const Duration(milliseconds: 375),
+                                          child: SlideAnimation(
+                                            verticalOffset: 50.0,
+                                            child: FadeInAnimation(
+                                              child: ContactCard(
+                                                contact:
+                                                    snapshot.data.docs[index],
+                                              ),
+                                            ),
+                                          ),
+                                        ));
+                                  }),
+                            )
                           : const EmptyContentView());
                 }));
   }

@@ -1,4 +1,5 @@
 // * Base model that has a busy state for monitoring loading
+
 import 'package:flutter/material.dart';
 
 class BaseModel extends ChangeNotifier {

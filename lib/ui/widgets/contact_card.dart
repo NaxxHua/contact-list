@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:contact_list/core/models/contact.dart';
 import 'package:contact_list/ui/shared/size_helper.dart';
 
 class ContactCard extends StatelessWidget {
@@ -19,7 +18,7 @@ class ContactCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(
         horizontal: smallSpace(context) * 0.4,
-        vertical: smallSpace(context) * 0.15,
+        vertical: smallSpace(context),
       ),
       decoration: BoxDecoration(
         color: Theme.of(context).backgroundColor,
@@ -50,7 +49,6 @@ class ContactCard extends StatelessWidget {
                       children: <Widget>[
                         DecoratedBox(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
                                 blurRadius: 40,
@@ -65,24 +63,20 @@ class ContactCard extends StatelessWidget {
                             radius: smallSpace(context) * 2,
                           ),
                         ),
-                        Positioned(
-                          right: -displayWidth(context) * 0.035,
-                          bottom: -smallSpace(context) * 0.2,
-                          child: Container(
-                            padding: EdgeInsets.all(
-                              displayWidth(context) * 0.01,
-                            ),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Theme.of(context).backgroundColor,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 20,
-                                    color: Theme.of(context).shadowColor,
-                                    offset: const Offset(1, 1),
-                                  )
-                                ]),
+                        Container(
+                          padding: EdgeInsets.all(
+                            displayWidth(context) * 0.001,
                           ),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Theme.of(context).backgroundColor,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 10,
+                                  color: Theme.of(context).shadowColor,
+                                  offset: const Offset(1, 1),
+                                )
+                              ]),
                         ),
                       ],
                     ),
@@ -99,12 +93,8 @@ class ContactCard extends StatelessWidget {
                         SizedBox(
                           height: smallSpace(context) * 0.1,
                         ),
-                        Text(
-                          contact['phoneNumber'],
-                          style: Theme.of(context).textTheme.bodyText1.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
-                        ),
+                        Text(contact['phoneNumber'],
+                            style: Theme.of(context).textTheme.bodyText1),
                       ],
                     ),
                   ],

@@ -3,11 +3,10 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
-import 'package:contact_list/ui/widgets/contact_card.dart';
 import 'package:contact_list/core/viewmodels/contact_view_model.dart';
 import 'package:contact_list/ui/base_widget.dart';
-import 'package:contact_list/ui/widgets/contact_form_field.dart';
 import 'package:contact_list/ui/shared/size_helper.dart';
+import 'package:contact_list/ui/widgets/contact_form_field.dart';
 
 class ContactCreateView extends StatefulWidget {
   static const routeName = '/contact-create-view';

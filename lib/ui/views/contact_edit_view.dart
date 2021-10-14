@@ -40,7 +40,11 @@ class _ContactEditViewState extends State<ContactEditView> {
             : Scaffold(
                 appBar: AppBar(
                   elevation: 2.0,
-                  title: Text(widget.contact['firstName']),
+                  title: const Text('Edit a Contact'),
+                  leading: IconButton(
+                    icon: const Icon(Icons.arrow_back),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
                   actions: <Widget>[
                     TextButton(
                       // The button that saves(submits) data
@@ -62,18 +66,6 @@ class _ContactEditViewState extends State<ContactEditView> {
                     child: Form(
                         key: _formKey,
                         child: Column(children: <Widget>[
-                          SizedBox(
-                            width: displayWidth(context),
-                            child: ContactFormField(
-                              hintText: 'id',
-                              controller: TextEditingController(
-                                  text: widget.contact.id),
-                              onSaved: (id) => model.id = id,
-                            ),
-                          ),
-                          SizedBox(
-                            height: displayHeight(context) * 0.1,
-                          ),
                           SizedBox(
                             width: displayWidth(context),
                             child: ContactFormField(

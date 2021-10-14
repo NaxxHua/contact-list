@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           primaryColor: const Color(0xff1a1f71),
           primaryColorLight: const Color(0xfffa9b00),
           backgroundColor: Colors.white,
-          shadowColor: Colors.grey[300],
+          shadowColor: const Color(0xfffa9b00).withOpacity(0.2),
           appBarTheme: const AppBarTheme(
             color: Color(0xff1a1f71),
             elevation: 0,
@@ -38,16 +38,16 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(
             headline1: TextStyle(
               fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey[700],
+              fontWeight: FontWeight.w400,
+              color: Colors.black,
             ),
             headline2: TextStyle(
               fontSize: 21,
-              color: Colors.grey[400],
+              color: Colors.grey[700],
             ),
             bodyText1: TextStyle(
               fontSize: 19,
-              color: Colors.grey[400],
+              color: Colors.grey[500],
             ),
             bodyText2: const TextStyle(fontSize: 18, color: Colors.white),
           ),
