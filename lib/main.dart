@@ -49,7 +49,10 @@ class MyApp extends StatelessWidget {
               fontSize: 19,
               color: Colors.grey[500],
             ),
-            bodyText2: const TextStyle(fontSize: 18, color: Colors.white),
+            bodyText2: TextStyle(
+                fontSize: 18,
+                color: Color(0xff1a1f71),
+                fontWeight: FontWeight.w500),
           ),
         ),
         home: ContactView(),

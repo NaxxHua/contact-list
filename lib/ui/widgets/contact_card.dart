@@ -22,11 +22,13 @@ class ContactCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: Theme.of(context).backgroundColor,
+        // Add some shadow below the card
         boxShadow: [
           BoxShadow(
             color: Theme.of(context).shadowColor,
             blurRadius: 5,
             spreadRadius: 2,
+            // Make the shadow spread downward
             offset: const Offset(0, 5),
           ),
         ],
@@ -39,6 +41,7 @@ class ContactCard extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            // The avatar has Visa branding color
             CircleAvatar(
               backgroundColor: Colors.grey[100],
               foregroundImage: AssetImage('assets/user_icon.png'),

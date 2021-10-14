@@ -34,11 +34,23 @@ class _ContactDetailViewState extends State<ContactDetailView> {
             : StreamBuilder(
                 stream: model.getContactStream(widget.contact.id),
                 builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+                  if (snapshot.hasError) {
+                    return const Text('Something went wrong');
+                  }
+
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Scaffold(
+                      body: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  }
                   return Scaffold(
                       appBar: AppBar(
                         title: const Text(''),
                         leading: IconButton(
-                          icon: const Icon(Icons.arrow_back),
+                          icon: Icon(Icons.arrow_back_ios),
+                          color: Theme.of(context).primaryColor,
                           onPressed: () => Navigator.of(context).pop(),
                         ),
                         actions: [
@@ -52,9 +64,9 @@ class _ContactDetailViewState extends State<ContactDetailView> {
                               child: Text("Edit",
                                   style: Theme.of(context).textTheme.bodyText2))
                         ],
-                        backgroundColor: Theme.of(context)
-                            .primaryColor, //You can make this transparent
-                        elevation: 0.0, //No shadow
+                        backgroundColor: Colors.white,
+                        bottomOpacity: 0.0,
+                        elevation: 0.0,
                       ),
                       body: Stack(children: <Widget>[
                         Container(

@@ -42,7 +42,7 @@ class _ContactEditViewState extends State<ContactEditView> {
                   elevation: 2.0,
                   title: const Text('Edit a Contact'),
                   leading: IconButton(
-                    icon: const Icon(Icons.arrow_back),
+                    icon: const Icon(Icons.arrow_back_ios),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                   actions: <Widget>[
