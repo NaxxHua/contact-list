@@ -5,7 +5,7 @@ import 'package:contact_list/core/viewmodels/base_model.dart';
 import 'package:contact_list/core/models/contact.dart';
 
 class ContactDetailViewModel extends BaseModel {
-  Api _api;
+  final Api _api;
 
   ContactDetailViewModel({Api api}) : _api = api;
 

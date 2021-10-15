@@ -7,7 +7,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:contact_list/core/viewmodels/contact_detail_view_model.dart';
 import 'package:contact_list/ui/base_widget.dart';
 import 'package:contact_list/ui/widgets/contact_detail_card.dart';
-import 'package:contact_list/ui/shared/size_helper.dart';
 import 'package:contact_list/ui/views/contact_edit_view.dart';
 
 class ContactDetailView extends StatefulWidget {

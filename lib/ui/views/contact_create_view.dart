@@ -50,7 +50,7 @@ class _ContactCreateViewState extends State<ContactCreateView> {
                           // Save the user input from the form
                           _formKey.currentState.save();
                           // Create contact
-                          await model.createContact();
+                          model.createContact();
                           if (model.valid) {
                             Navigator.of(context).pushNamedAndRemoveUntil(
                                 '/contact-view', (route) => false,

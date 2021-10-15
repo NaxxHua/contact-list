@@ -12,6 +12,7 @@ class ContactFormField extends StatelessWidget {
   final TextEditingController controller;
 
   ContactFormField({
+    Key key,
     this.validator,
     this.hintText,
     this.suffixIcon,
@@ -21,7 +22,7 @@ class ContactFormField extends StatelessWidget {
     this.controller,
     this.onChanged,
     this.errorText,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class ContactFormField extends StatelessWidget {
       decoration: InputDecoration(
         errorMaxLines: 2,
         helperText: ' ',
-        contentPadding: EdgeInsets.all(20),
+        contentPadding: const EdgeInsets.all(20),
         filled: true,
         fillColor: Colors.white,
         focusColor: Theme.of(context).primaryColor,

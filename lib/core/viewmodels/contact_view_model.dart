@@ -56,10 +56,8 @@ class ContactViewModel extends BaseModel {
     );
     setBusy(false);
     if (result == false) {
-      print("Invalid contact info");
       valid = false;
     } else {
-      print("Valid contact info");
       valid = true;
     }
   }
