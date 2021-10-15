@@ -1,13 +1,10 @@
 // * This is the page that users can edit contact information.
 
-import 'package:contact_list/ui/views/contact_detail_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:contact_list/core/models/contact.dart';
 import 'package:contact_list/core/viewmodels/contact_edit_view_model.dart';
-
 import 'package:contact_list/ui/base_widget.dart';
 import 'package:contact_list/ui/widgets/contact_form_field.dart';
 import 'package:contact_list/ui/shared/size_helper.dart';
@@ -59,7 +56,8 @@ class _ContactEditViewState extends State<ContactEditView> {
                         // Save the user input from the form
                         _formKey.currentState.save();
                         // Update contact
-                        model.updateContact();
+                        model.updateContact(widget.contact.id.toString());
+
                         Navigator.pop(context);
                       },
                     ),
@@ -152,7 +150,7 @@ class _ContactEditViewState extends State<ContactEditView> {
                                   model.deleteContact(
                                       widget.contact.id.toString())
                                 ],
-                                child: const Text('OK'),
+                                child: const Text('Yes'),
                               ),
                             ],
                           ),

@@ -47,7 +47,7 @@ class ContactDetailCard extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 5,
+              flex: 6,
               child: Container(
                 color: Colors.grey[200],
                 child: Center(
@@ -58,48 +58,48 @@ class ContactDetailCard extends StatelessWidget {
                             mediumSpace(context),
                             mediumSpace(context)),
                         child: Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: EdgeInsets.all(mediumSpace(context)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.phone,
+                                    size: 28,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 20.0,
                                   ),
                                   Text(
-                                    "123",
-                                    style: TextStyle(
-                                      fontSize: 12.0,
-                                      color: Colors.grey[400],
-                                    ),
+                                    contact['phoneNumber'],
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline1
+                                        .copyWith(fontSize: 20),
                                   )
                                 ],
                               ),
                               SizedBox(
-                                height: 20.0,
+                                height: largeSpace(context),
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.email,
-                                    color: Colors.yellowAccent[400],
-                                    size: 35,
+                                    size: 28,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 20.0,
                                   ),
                                   Text(
-                                    "123",
-                                    style: TextStyle(
-                                      fontSize: 12.0,
-                                      color: Colors.grey[400],
-                                    ),
+                                    contact['emailAddress'],
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline1
+                                        .copyWith(fontSize: 20),
                                   )
                                 ],
                               ),

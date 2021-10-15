@@ -28,7 +28,6 @@ class ContactFormField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       autofocus: autofocus == null ? false : true,
-
       // Pass in validation function from parent widget.
       validator: validator,
       onChanged: onChanged,

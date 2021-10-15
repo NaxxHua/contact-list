@@ -17,7 +17,7 @@ class ContactEditViewModel extends BaseModel {
   List<Contact> contacts;
 
   // * Update Contact
-  void updateContact() async {
+  void updateContact(id) async {
     setBusy(true);
     _api.updateContact(
       id: id,
@@ -26,6 +26,13 @@ class ContactEditViewModel extends BaseModel {
       phoneNumber: phoneNumber,
       emailAddress: emailAddress,
     );
+    setBusy(false);
+  }
+
+  // * Get contacts;
+  void getContacts() async {
+    setBusy(true);
+    contacts = await _api.getContacts();
     setBusy(false);
   }
 
