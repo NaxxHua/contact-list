@@ -55,6 +55,7 @@ class ContactFormField extends StatelessWidget {
         ),
         labelText: labelText,
         enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.zero,
           borderSide:
               BorderSide(color: Theme.of(context).primaryColor, width: 0.0),
         ),

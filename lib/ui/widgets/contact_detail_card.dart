@@ -15,50 +15,102 @@ class ContactDetailCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: smallSpace(context) * 0.4,
-      ),
-      decoration: BoxDecoration(
-          color: Theme.of(context).backgroundColor,
-          border: Border(bottom: BorderSide(color: Colors.grey[300]))),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: smallSpace(context),
-          vertical: mediumSpace(context) * 0.6,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            // The avatar has Visa branding color
-            CircleAvatar(
-              backgroundColor: Colors.grey[100],
-              foregroundImage: AssetImage('assets/user_icon.png'),
-              radius: mediumSpace(context),
-            ),
-            SizedBox(
-              width: mediumSpace(context) * 0.4,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  contact['firstName'] + " " + contact['lastName'],
-                  style: Theme.of(context).textTheme.headline1,
+    return Stack(
+      children: [
+        Column(
+          children: [
+            Expanded(
+              flex: 5,
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
                 ),
-                SizedBox(
-                  height: smallSpace(context) * 0.1,
-                ),
-                Text(contact['phoneNumber'],
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText2
-                        .copyWith(color: Colors.grey[500], fontSize: 16)),
-              ],
+                child: Column(children: [
+                  SizedBox(
+                    height: largeSpace(context) * 2.2,
+                  ),
+                  const CircleAvatar(
+                    radius: 65.0,
+                    backgroundImage: AssetImage('assets/user_icon.png'),
+                    backgroundColor: Colors.white,
+                  ),
+                  SizedBox(
+                    height: mediumSpace(context) * 1.2,
+                  ),
+                  Text(contact['firstName'] + ' ' + contact['lastName'],
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline1
+                          .copyWith(color: Colors.white, fontSize: 36)),
+                ]),
+              ),
+            ),
+            Expanded(
+              flex: 5,
+              child: Container(
+                color: Colors.grey[200],
+                child: Center(
+                    child: Card(
+                        margin: EdgeInsets.fromLTRB(
+                            mediumSpace(context),
+                            smallSpace(context) * 1.5,
+                            mediumSpace(context),
+                            mediumSpace(context)),
+                        child: Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Icon(
+                                    Icons.phone,
+                                  ),
+                                  SizedBox(
+                                    width: 20.0,
+                                  ),
+                                  Text(
+                                    "123",
+                                    style: TextStyle(
+                                      fontSize: 12.0,
+                                      color: Colors.grey[400],
+                                    ),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 20.0,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Icon(
+                                    Icons.email,
+                                    color: Colors.yellowAccent[400],
+                                    size: 35,
+                                  ),
+                                  SizedBox(
+                                    width: 20.0,
+                                  ),
+                                  Text(
+                                    "123",
+                                    style: TextStyle(
+                                      fontSize: 12.0,
+                                      color: Colors.grey[400],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ))),
+              ),
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 }

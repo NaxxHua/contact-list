@@ -29,13 +29,6 @@ class ContactEditViewModel extends BaseModel {
     setBusy(false);
   }
 
-  // * Get contacts;
-  void getContacts() async {
-    setBusy(true);
-    contacts = await _api.getContacts();
-    setBusy(false);
-  }
-
   // * Delete Contact
   void deleteContact(id) async {
     setBusy(true);

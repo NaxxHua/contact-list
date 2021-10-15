@@ -62,6 +62,7 @@ class _ContactViewState extends State<ContactView> {
                             ),
                           ]),
                       body: (snapshot.data.docs.isNotEmpty)
+                          // Add some animation during loading contact list
                           ? AnimationLimiter(
                               child: ListView.builder(
                                   itemCount: snapshot.data.docs.length,

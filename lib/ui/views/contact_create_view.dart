@@ -73,12 +73,13 @@ class _ContactCreateViewState extends State<ContactCreateView> {
                         key: _formKey,
                         child: Column(children: <Widget>[
                           SizedBox(
-                            height: displayHeight(context) * 0.1,
+                            height: mediumSpace(context),
                           ),
                           SizedBox(
                             width: displayWidth(context),
                             child: ContactFormField(
-                              hintText: 'Firstname',
+                              hintText: 'First Name',
+                              labelText: 'First Name',
                               onSaved: (firstName) =>
                                   model.firstName = firstName,
                             ),
@@ -89,7 +90,8 @@ class _ContactCreateViewState extends State<ContactCreateView> {
                           SizedBox(
                             width: displayWidth(context),
                             child: ContactFormField(
-                              hintText: 'Lastname',
+                              hintText: 'Last Name',
+                              labelText: 'Last Name',
                               onSaved: (lastName) => model.lastName = lastName,
                             ),
                           ),
@@ -100,6 +102,7 @@ class _ContactCreateViewState extends State<ContactCreateView> {
                             width: displayWidth(context),
                             child: ContactFormField(
                               hintText: 'Phone Number',
+                              labelText: 'Phone Number',
                               onSaved: (phoneNumber) =>
                                   model.phoneNumber = phoneNumber,
                             ),
@@ -111,6 +114,7 @@ class _ContactCreateViewState extends State<ContactCreateView> {
                             width: displayWidth(context),
                             child: ContactFormField(
                               hintText: 'Email Address',
+                              labelText: 'Email Address',
                               onSaved: (email) => model.emailAddress = email,
                               validator: (email) => model.validateEmail(email),
                             ),

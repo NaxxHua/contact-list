@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.white,
           shadowColor: Colors.grey[300],
           appBarTheme: const AppBarTheme(
-            color: Color(0xff1a1f71),
+            color: Color(0xff15195a),
             elevation: 0,
           ),
           textTheme: TextTheme(
@@ -50,9 +50,7 @@ class MyApp extends StatelessWidget {
               color: Colors.grey[500],
             ),
             bodyText2: TextStyle(
-                fontSize: 18,
-                color: Color(0xff1a1f71),
-                fontWeight: FontWeight.w500),
+                fontSize: 18, color: Colors.white, fontWeight: FontWeight.w500),
           ),
         ),
         home: ContactView(),
