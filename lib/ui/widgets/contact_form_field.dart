@@ -1,3 +1,5 @@
+// * This form field is used in both create and edit contact.
+
 import 'package:flutter/material.dart';
 
 class ContactFormField extends StatelessWidget {

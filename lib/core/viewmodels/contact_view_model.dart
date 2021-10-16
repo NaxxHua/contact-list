@@ -1,5 +1,7 @@
 // * This is the contact view model. View model handles all the business logic and connects view and model.
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:contact_list/core/models/contact.dart';
 import 'package:contact_list/core/services/api.dart';
 import 'package:contact_list/core/viewmodels/base_model.dart';

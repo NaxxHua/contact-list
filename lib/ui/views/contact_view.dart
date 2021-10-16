@@ -62,7 +62,9 @@ class _ContactViewState extends State<ContactView> {
                             ),
                           ]),
                       body: (snapshot.data.docs.isNotEmpty)
-                          // Add some animation during loading contact list
+                          // Add some animation during loading contact list,
+                          // everytime you refresh the app or this page is loaded,
+                          // you will see slide animation
                           ? AnimationLimiter(
                               child: ListView.builder(
                                   itemCount: snapshot.data.docs.length,
@@ -95,6 +97,7 @@ class _ContactViewState extends State<ContactView> {
                                         ));
                                   }),
                             )
+                          // If there is no contact, display the empty contentview
                           : const EmptyContentView());
                 }));
   }

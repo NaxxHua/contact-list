@@ -37,7 +37,7 @@ class _ContactCreateViewState extends State<ContactCreateView> {
             : Scaffold(
                 appBar: AppBar(
                   elevation: 2.0,
-                  title: const Text("Add a new contact"),
+                  title: const Text("Add a New Contact"),
                   actions: <Widget>[
                     TextButton(
                       // The button that saves(submits) data

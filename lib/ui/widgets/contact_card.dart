@@ -1,4 +1,4 @@
-// * This is the contact card widget.
+// * This is the contact card widget which is used in contact view
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -30,7 +30,7 @@ class ContactCard extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            // The avatar has Visa branding color
+            // The avatar has Visa branding gold color
             CircleAvatar(
               backgroundColor: Colors.grey[100],
               foregroundImage: AssetImage('assets/user_icon.png'),

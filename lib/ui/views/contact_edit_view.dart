@@ -123,6 +123,8 @@ class _ContactEditViewState extends State<ContactEditView> {
                       SizedBox(
                         height: smallSpace(context),
                       ),
+                      // A textbutton with alert dialog to ask the user if they
+                      // are sure about deleting the contact
                       SizedBox(
                           child: TextButton(
                         onPressed: () => showDialog<String>(

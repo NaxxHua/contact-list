@@ -1,4 +1,4 @@
-// * This is the contact detail widget.
+// * This is the contact detail widget which displays the page of contact's detail information.
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
