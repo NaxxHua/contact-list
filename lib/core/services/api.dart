@@ -23,8 +23,8 @@ class Api {
       });
       return true;
     } catch (e) {
-      // print('error');
-      // print(e.toString());
+      print('error');
+      print(e.toString());
       return false;
     }
   }

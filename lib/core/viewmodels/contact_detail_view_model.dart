@@ -1,4 +1,4 @@
-// * This is the contact detail view model. View model handles all the business logic and connects view and model.
+// * This is the contact detail view model.
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 

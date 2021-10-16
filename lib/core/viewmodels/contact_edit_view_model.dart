@@ -1,4 +1,4 @@
-// * This is the contact edit view model. View model handles all the business logic and connects view and model.
+// * This is the contact edit view model.
 
 import 'package:contact_list/core/services/api.dart';
 import 'package:contact_list/core/viewmodels/base_model.dart';

@@ -146,11 +146,11 @@ class _ContactEditViewState extends State<ContactEditView> {
                                 ),
                               ),
                               TextButton(
-                                onPressed: () => [
+                                onPressed: () async => [
+                                  model.deleteContact(
+                                      widget.contact.id.toString()),
                                   Navigator.of(context).pushNamedAndRemoveUntil(
                                       '/', (Route<dynamic> route) => false),
-                                  model.deleteContact(
-                                      widget.contact.id.toString())
                                 ],
                                 child: const Text('Yes'),
                               ),

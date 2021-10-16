@@ -1,8 +1,10 @@
 # contact_list
 
-A new Flutter project by Jiahua.
+contact_list is an application that can store contacts.
 
 ## Getting Started
+
+### Tech Stack:
 
 This project is a starting point for a Flutter application.
 

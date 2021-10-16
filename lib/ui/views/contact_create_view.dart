@@ -3,7 +3,7 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
-import 'package:contact_list/core/viewmodels/contact_view_model.dart';
+import 'package:contact_list/core/viewmodels/contact_create_view_model.dart';
 import 'package:contact_list/ui/base_widget.dart';
 import 'package:contact_list/ui/shared/size_helper.dart';
 import 'package:contact_list/ui/widgets/contact_form_field.dart';
@@ -23,11 +23,8 @@ class _ContactCreateViewState extends State<ContactCreateView> {
 
   @override
   Widget build(BuildContext context) {
-    return BaseWidget<ContactViewModel>(
-        model: ContactViewModel(api: Provider.of(context)),
-        onModelReady: (model) {
-          model.getContacts();
-        },
+    return BaseWidget<ContactCreateViewModel>(
+        model: ContactCreateViewModel(api: Provider.of(context)),
         builder: (context, model, _) => model.busy
             ? const Scaffold(
                 body: Center(
@@ -49,9 +46,9 @@ class _ContactCreateViewState extends State<ContactCreateView> {
                         if (_formKey.currentState.validate()) {
                           // Save the user input from the form
                           _formKey.currentState.save();
-                          // Create contact
-                          model.createContact();
+                          await model.createContact();
                           if (model.valid) {
+                            // Create contact
                             Navigator.of(context).pushNamedAndRemoveUntil(
                                 '/contact-view', (route) => false,
                                 arguments: {});
